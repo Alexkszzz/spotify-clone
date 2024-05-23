@@ -1,11 +1,10 @@
 "use client"
 
 import SidebarItem from './SidebarItem';
+import Library from './Library';
 import Link from 'next/link';
 import { IoHome } from "react-icons/io5";
 import { FiSearch } from "react-icons/fi";
-import { FaBookOpen } from "react-icons/fa6";
-import { FaPlus } from "react-icons/fa";
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
 
@@ -46,30 +45,10 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
                         />
                     ))}
                 </div>
-                {/* <nav>
-                    <ul>
-                        <li className="mb-3">
-                            <Link legacyBehavior href="/">
-                                <a className="flex items-center space-x-3 hover:text-white text-xl font-bold">
-                                    <IoHome />
-                                    <span>Home</span>
-                                </a>
-                            </Link>
-                        </li>
-                        <li className="mb-3">
-                            <Link legacyBehavior href="/search">
-                                <a className="flex items-center space-x-3 hover:text-white text-xl font-bold">
-                                    <FiSearch />
-                                    <span>Search</span>
-                                </a>
-                            </Link>
-                        </li>
-
-                    </ul>
-                </nav> */}
             </div>
             <div className="bg-gray-900 rounded-md p-5 m-1 flex-1">
-                <div className="mb-3 flex items-center justify-between">
+                <Library />
+                {/* <div className="mb-3 flex items-center justify-between">
                     <div className="flex items-center space-x-3 hover:text-white text-xl font-bold">
                         <FaBookOpen />
                         <span>Your Library</span>
@@ -90,7 +69,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
                     px-3
                 '>
                     List of Songs!
-                </div>
+                </div> */}
             </div>
 
 
