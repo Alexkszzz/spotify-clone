@@ -1,22 +1,27 @@
-import type { Metadata } from "next";
-import { Figtree } from "next/font/google";
-import "./globals.css";
+import './globals.css';
+import { ReactNode } from 'react';
+import Sidebar from './components/Sidebar';
+import Header from './components/Header';
 
-const font = Figtree({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Spotify Clone",
-  description: "Music is life!",
+export const metadata = {
+  title: 'Spotify Clone',
+  description: 'A Spotify clone built with Next.js and Tailwind CSS',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={font.className}>{children}</body>
+      <body>
+        <div className="flex">
+          <Sidebar />
+          <div className="flex-1 flex flex-col">
+            <Header />
+            <main className="flex-1 bg-gray-800 text-gray-100 p-10">
+              {children}
+            </main>
+          </div>
+        </div>
+      </body>
     </html>
   );
 }
