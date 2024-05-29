@@ -1,7 +1,10 @@
 import './globals.css';
 import { ReactNode } from 'react';
 import Sidebar from './components/Sidebar';
-import Header from './components/Header';
+import SupabaseProvider from '@/providers/SupabaseProvider';
+import UserProvider from '@/providers/UserProvider';
+import ModalProvider from '@/providers/ModalProvider';
+import ToasterProvider from '@/providers/ToasterProvider';
 
 export const metadata = {
   title: 'Spotify Clone',
@@ -12,15 +15,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className='bg-black'>
-        <Sidebar>
-          {children}
-        </Sidebar>
-        {/* <div className="flex-1 flex flex-col">
-            <Header />
-            <main className="flex-1 bg-gray-800 text-gray-100 p-10">
+        <ToasterProvider />
+        <SupabaseProvider>
+          <UserProvider>
+            <ModalProvider />
+            <Sidebar>
               {children}
-            </main>
-          </div> */}
+            </Sidebar>
+          </UserProvider>
+        </SupabaseProvider>
       </body>
     </html>
   );
