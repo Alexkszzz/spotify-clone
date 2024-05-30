@@ -1,11 +1,22 @@
 import React from 'react'
 import { FaBookOpen } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
+import useAuthModal from '@/hooks/useAuthModal';
+import { useUser } from '@/hooks/useUser';
+import useUploadModal from '@/hooks/useUploadModal';
 
 const Library = () => {
 
+    const authModal = useAuthModal()
+    const uploadModal = useUploadModal()
+    const { user } = useUser()
+
     const onClick = () => {
-        //handleOnClick
+        if (!user) {
+            return authModal.onOpen()
+        }
+        // TODO: Check for subscription
+        return uploadModal.onOpen()
     }
     return (
         <>
