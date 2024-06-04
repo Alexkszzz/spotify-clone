@@ -7,12 +7,14 @@ import { IoHome } from "react-icons/io5";
 import { FiSearch } from "react-icons/fi";
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
+import { Song } from '@/types';
 
 interface SidebarProps {
-    children: React.ReactNode
+    children: React.ReactNode;
+    songs: Song[]
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ children }) => {
+const Sidebar: React.FC<SidebarProps> = ({ children, songs }) => {
     const pathname = usePathname();
     const routes = useMemo(() => [
         {
@@ -48,7 +50,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
                     </div>
                 </div>
                 <div className="bg-neutral-900 rounded-md p-5 mx-2 mb-2 h-full overflow-y-auto">
-                    <Library />
+                    <Library songs={songs} />
                 </div>
             </div >
             <main className='h-screen flex-1 py-2'>

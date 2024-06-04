@@ -4,9 +4,14 @@ import { FaPlus } from "react-icons/fa";
 import useAuthModal from '@/hooks/useAuthModal';
 import { useUser } from '@/hooks/useUser';
 import useUploadModal from '@/hooks/useUploadModal';
+import { Song } from '@/types';
+import MediaItem from './MediaItem';
 
-const Library = () => {
+interface LibraryProps {
+    songs: Song[]
+}
 
+const Library: React.FC<LibraryProps> = ({ songs }) => {
     const authModal = useAuthModal()
     const uploadModal = useUploadModal()
     const { user } = useUser()
@@ -25,7 +30,6 @@ const Library = () => {
                     <FaBookOpen size={25} />
                     <span>Your Library</span>
                 </div>
-
                 <button className="p-3 rounded-full hover:bg-gray-800 duration-200 relative group" onClick={onClick}>
                     <FaPlus />
                     <span className="absolute left-full ml-2 whitespace-nowrap px-2 py-1 bg-gray-800 text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -36,11 +40,17 @@ const Library = () => {
             <div className='
                     flex
                     flex-col
-                    gap-y-2
+                    gap-y-4
                     mt-4
                     px-3
                 '>
-                List of Songs!
+                {songs.map((song) =>
+                    <MediaItem
+                        onClick={() => { }}
+                        key={song.id}
+                        data={song}
+                    />
+                )}
             </div>
         </>
     )

@@ -86,8 +86,9 @@ const UploadModal = () => {
                 setIsLoading(false)
                 return toast.error(supabaseError.message)
             }
-            router.refresh()
             setIsLoading(false)
+            console.log('disabled is false')
+            router.refresh()
             toast.success("Song is successfully uploaded")
             reset()
             uploadModal.onClose()
@@ -96,7 +97,7 @@ const UploadModal = () => {
             toast.error("Something went wrong")
         }
         finally {
-            setIsLoading(true)
+            setIsLoading(false)
         }
     }
 
