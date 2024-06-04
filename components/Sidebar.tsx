@@ -8,6 +8,7 @@ import { FiSearch } from "react-icons/fi";
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
 import { Song } from '@/types';
+import usePlayer from '@/hooks/usePlayer';
 
 interface SidebarProps {
     children: React.ReactNode;
@@ -15,6 +16,7 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ children, songs }) => {
+    const player = usePlayer();
     const pathname = usePathname();
     const routes = useMemo(() => [
         {
